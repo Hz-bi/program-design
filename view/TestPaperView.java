@@ -115,10 +115,25 @@ public class TestPaperView extends JPanel implements ActionListener{
       this.testPaper = testPaper;
       handleTestPaper.setTestPaper(testPaper);
    }
+
    public void actionPerformed(ActionEvent e){
       usedTime_minute = usedTime/60;
       usedTime_second = usedTime-usedTime_minute*60;
       showUsedTime.setText("考试剩余时间:"+usedTime_minute+"分"+usedTime_second+"秒");
+      if(usedTime == 300){
+         JFrame f = new JFrame("时间警告") ; //创建一个窗体
+         f.setVisible(true);
+         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+         int width = 400;
+         int height = 300;
+         f.setBounds((d.width - width) / 2, (d.height - height) / 2, width, height);// 设置组件的大小
+         f.setBackground(Color.RED) ;    // 将背景设置成白色
+         Point p = new Point(500,500) ;  // 指定组件的显示位置
+         JLabel label1 = new JLabel("考试时间还剩5分钟");
+         label1.setHorizontalAlignment(0);
+         f.add(label1);
+
+      }
       if(usedTime == 0){
           time.stop();
           showUsedTime.setText("请交卷");
