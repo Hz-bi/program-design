@@ -1,0 +1,2 @@
+如果本机有JRE,并保证jxl.jar（操作Excel所需要的API的jar文件）在JRE\lib\ext中。
+双击.bat文件即可运行程序
