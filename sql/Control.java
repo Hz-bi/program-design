@@ -1,7 +1,8 @@
 /*
   使用环境依赖:MySQL8.0 Navicat Premium12.0
   驱动依赖:mysql-connector-java-8.0.20.jar
-  Control.java第二次修改:修改部分换行符、设置null字符串为空、添加部分关键注释
+  Control.java第三次修改:新增打印所查询数据的行列数
+  该源文件可用于直接测试数据库是否正常连接
 */
 package sql;
 import java.sql.*;
@@ -18,10 +19,14 @@ public class Control {
             System.out.println("连接数据库成功!");
         }
         //执行查询
-        Statement stmt=(Statement)conn.createStatement(); //实例化Statement对象
+        Statement stmt=(Statement)conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY); //实例化Statement对象
         String sql = "SELECT * FROM traffic";//切换对应表 更改表名即可
         ResultSet rs = stmt.executeQuery(sql);
         System.out.println("数据库查询结果如下:");
+        System.out.println("共计"+rs.getMetaData().getColumnCount()+"列数据");//打印数据总列数
+        rs.last();//rs指向数据末尾
+        System.out.println("共计"+rs.getRow()+"行数据");//打印数据总行数
+        rs.first();//rs指向数据开头，用于遍历
         while (rs.next()){
             String subject = rs.getString("题目内容");
             String choiceA = rs.getString("选择A");
