@@ -1,4 +1,4 @@
-package ch5.view;
+package view;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -8,7 +8,7 @@ public class IntegrationView extends JFrame{
         tabbedPane= new JTabbedPane(JTabbedPane.LEFT);//卡在左侧 
         tabbedPane.validate();
         add(tabbedPane,BorderLayout.CENTER); 
-        setBounds(100,100,1200,560);
+        setBounds(100,100,1280,760);//调整总框图分辨率和初始位置
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }

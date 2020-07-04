@@ -1,8 +1,8 @@
-package ch5.view;
+package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import ch5.data.*;
+import data.*;
 public class  HandleTestPaper implements ActionListener{
     TestPaperView  view;
     TestPaper   testPaper;   //需要处理的试卷
@@ -79,7 +79,7 @@ public class  HandleTestPaper implements ActionListener{
            view.usedTime = view.totalTime;
            view.showUsedTime.setText("考试剩余时间:"+view.totalTime);
            view.showContent.setText(null);
-           Image img = tool.getImage("图像管理/renew.jpg");
+           Image img = tool.getImage("软件发布/图像管理/renew.jpg");
            handleImage(img); 
            view.showImage.repaint();
            view.nextProblem.setVisible(true); 
@@ -112,7 +112,7 @@ public class  HandleTestPaper implements ActionListener{
               }
               String imageName = problem.getImageName();
                //用户将必须把图像存放到"图像管理"文件夹
-              Image img = tool.getImage("图像管理/"+imageName);
+              Image img = tool.getImage("软件发布/图像管理/"+imageName);
               handleImage(img);   
           }
     }

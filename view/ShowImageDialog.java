@@ -1,4 +1,4 @@
-package ch5.view;
+package view;
 import java.awt.*;
 import javax.swing.*;
 public class ShowImageDialog extends JDialog   { 

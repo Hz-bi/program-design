@@ -1,26 +1,33 @@
-package ch5.view;
+package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import ch5.data.*;
+import data.*;
+import data.TestPaper;
+
 public class TestPaperView extends JPanel implements ActionListener{
    TestPaper testPaper;      //本视图需要显示的试卷
    public Teacher teacher ;  //批卷老师
    public JTextArea showContent;    //显示试题内容
    public ImageJPanel showImage;    //显示试题的图像
-   public JCheckBox choiceA,choiceB,choiceC,choiceD;//显示选项内容
+   public JRadioButton choiceA;
+   public JRadioButton choiceB;
+   public JRadioButton choiceC;
+   public JRadioButton choiceD;//显示选项内容
    public JButton nextProblem,previousProblem;  //选择上一题，下一题的按钮
    public JButton aProblemSubmit;  //确认某道题的回答或选择
    public JButton renewJButton   ;  //重新开始；
    public JButton submit;  //交卷
    HandleTestPaper handleTestPaper; //负责处理testPaper试卷中的数据
-   public int  totalTime = 0;      //考试用时（单位分）
+   public int  totalTime = 0;      //考试用时（单位秒）
    public int  usedTime  = totalTime;
+   public int  usedTime_minute = 0;  //剩余时间(分钟)
+   public int  usedTime_second = 0; //剩余时间(秒)
    public javax.swing.Timer time;          //考试计时器
    public JLabel showUsedTime   ;          //显示用时
    JLabel testName ;                       //显示考试名称
    public TestPaperView() {
-      time = new Timer(60*1000,this);//每隔1分钟计时一次（触发ActionEvent）本容器作为其监视器
+      time = new Timer(1000,this);//delay:60*1000 每隔1分钟计时一次（触发ActionEvent）本容器作为其监视器
       initView();
       registerListener();
    } 
@@ -36,10 +43,11 @@ public class TestPaperView extends JPanel implements ActionListener{
       showContent.setWrapStyleWord(true);
       showContent.setLineWrap(true); //回行自动
       showContent.setFont(new Font("宋体",Font.BOLD,18));
-      choiceA = new JCheckBox("A");
-      choiceB = new JCheckBox("B");
-      choiceC = new JCheckBox("C");
-      choiceD = new JCheckBox("D");
+      choiceA = new JRadioButton("A");
+      choiceB = new JRadioButton("B");
+      choiceC = new JRadioButton("C");
+      choiceD = new JRadioButton("D");
+      ButtonGroup group = new ButtonGroup(); //按钮选项组，加入后的按钮只能单选
       choiceA.setVisible(false);
       choiceB.setVisible(false);
       choiceC.setVisible(false);
@@ -73,6 +81,10 @@ public class TestPaperView extends JPanel implements ActionListener{
       JPanel twoInPSouth = new JPanel();
       oneInPSouth.setBackground(Color.green) ;
       oneInPSouth.setBackground(Color.pink) ;
+      group.add(choiceA);
+      group.add(choiceB);
+      group.add(choiceC);
+      group.add(choiceD); //单选按钮全部加入按钮组，确保只有单选
       oneInPSouth.add(choiceA);
       oneInPSouth.add(choiceB);
       oneInPSouth.add(choiceC);
@@ -99,7 +111,9 @@ public class TestPaperView extends JPanel implements ActionListener{
       handleTestPaper.setTestPaper(testPaper);
    }
    public void actionPerformed(ActionEvent e){
-      showUsedTime.setText("考试剩余时间:"+usedTime);
+      usedTime_minute = usedTime/60;
+      usedTime_second = usedTime-usedTime_minute*60;
+      showUsedTime.setText("考试剩余时间:"+usedTime_minute+"分"+usedTime_second+"秒");
       if(usedTime == 0){
           time.stop();
           showUsedTime.setText("请交卷");
@@ -114,6 +128,8 @@ public class TestPaperView extends JPanel implements ActionListener{
    public void setTotalTime(int n) {
       totalTime = n;
       usedTime = n;
-      showUsedTime.setText("考试剩余时间:"+usedTime);
+      usedTime_minute = usedTime/60;
+      usedTime_second = n-usedTime_minute*60;
+      showUsedTime.setText("考试剩余时间:"+usedTime_minute+"分"+usedTime_second+"秒");
    }
 }
