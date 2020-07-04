@@ -1,4 +1,4 @@
-package ch5.data;
+package data;
 import javax.swing.*;
 public class TeacherOne implements Teacher {
     public void giveTestPaparScore(TestPaper testPaper){
