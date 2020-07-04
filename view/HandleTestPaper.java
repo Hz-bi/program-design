@@ -40,9 +40,15 @@ public class  HandleTestPaper implements ActionListener{
               (view,"没有试题","消息对话框",JOptionPane.WARNING_MESSAGE);
           }
           
-       } 
+       }
+       if(e.getSource()==view.viewAnswer){   //查阅答案
+           JOptionPane.showMessageDialog
+                    (view,problem.getCorrectAnswer(),"消息对话框",JOptionPane.WARNING_MESSAGE);
+           view.viewAnswer.setVisible(false);
+       }
        if(e.getSource()==view.aProblemSubmit){  //确认一道题目的答案
-          String answer ="";
+           view.viewAnswer.setVisible(true);
+           String answer ="";
           if(view.choiceA.isSelected()){
              answer = answer+"A";
           }
@@ -65,6 +71,7 @@ public class  HandleTestPaper implements ActionListener{
           view.choiceC.setVisible(false);
           view.choiceD.setVisible(false); 
           view.aProblemSubmit.setVisible(false);
+
           problem.setUserAnswer(answer);
        } 
        if(e.getSource()==view.submit){
