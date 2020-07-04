@@ -16,6 +16,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    public JRadioButton choiceD;//显示选项内容
    public JButton nextProblem,previousProblem;  //选择上一题，下一题的按钮
    public JButton aProblemSubmit;  //确认某道题的回答或选择
+   public JButton viewAnswer;    //查看答案
    public JButton renewJButton   ;  //重新开始；
    public JButton submit;  //交卷
    HandleTestPaper handleTestPaper; //负责处理testPaper试卷中的数据
@@ -55,7 +56,9 @@ public class TestPaperView extends JPanel implements ActionListener{
       nextProblem = new JButton("下一题目");
       previousProblem = new JButton("上一题目");
       aProblemSubmit = new JButton("确认"); 
-      aProblemSubmit.setVisible(false); 
+      aProblemSubmit.setVisible(false);
+      viewAnswer = new JButton("查看答案");
+      viewAnswer.setVisible(false);
       renewJButton = new JButton("再来一次");
       renewJButton.setVisible(false);
       submit = new JButton("交卷");  
@@ -90,6 +93,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       oneInPSouth.add(choiceC);
       oneInPSouth.add(choiceD);
       oneInPSouth.add(aProblemSubmit);
+      oneInPSouth.add(viewAnswer);
       twoInPSouth.add(nextProblem);
       twoInPSouth.add(previousProblem);
       pSouth.add(oneInPSouth);
@@ -102,6 +106,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       nextProblem.addActionListener(handleTestPaper);
       previousProblem.addActionListener(handleTestPaper);
       aProblemSubmit.addActionListener(handleTestPaper);
+      viewAnswer.addActionListener(handleTestPaper);
       submit.addActionListener(handleTestPaper);
       renewJButton.addActionListener(handleTestPaper);
       handleTestPaper.setView(this);
