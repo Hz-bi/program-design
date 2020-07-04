@@ -8,3 +8,5 @@
 5.确认全部代码没有语法错误后(一般上面改完就没有了)，运行AppWindow.java  
    (AppTest.java为无窗口界面启动入口,用于测试试题 AppWindow.java为GUI启动入口,为主要入口)  
 注意：以上步骤仅在IDEA 2020.1环境中测试正常 如果使用Netbeans或者Eclipse 请自行参考修改  
+```
+上述步骤仓库内工程已经完成 IDEA可直接打开运行
