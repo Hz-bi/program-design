@@ -25,7 +25,7 @@ public class AppWindow {
        testView.setTeacher(new TeacherOne());
        testName = "Java—µ¡∑"; 
        testView.setTestName(testName);
-       testView.setTotalTime(10);
+       testView.setTotalTime(600);//øº ‘ ±º‰10∑÷÷”£¨600
        integrationView.addTestPaperView(testName,testView);
    }
 }
