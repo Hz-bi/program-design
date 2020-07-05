@@ -66,7 +66,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       submit.setBorderPainted(false);
       submit.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
       JPanel pNorth = new JPanel();
-      pNorth.setBackground(Color.cyan) ;
+      pNorth.setBackground(Color.white) ;
       showUsedTime = new JLabel();
       testName = new JLabel();
       testName.setFont(new Font("楷体",Font.BOLD,18));
