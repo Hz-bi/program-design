@@ -6,30 +6,30 @@ import data.*;
 import data.TestPaper;
 
 public class TestPaperView extends JPanel implements ActionListener{
-   TestPaper testPaper;      //æœ¬è§†å›¾éœ€è¦æ˜¾ç¤ºçš„è¯•å·
-   public Teacher teacher ;  //æ‰¹å·è€å¸ˆ
-   public JTextArea showContent;    //æ˜¾ç¤ºè¯•é¢˜å†…å®¹
-   public ImageJPanel showImage;    //æ˜¾ç¤ºè¯•é¢˜çš„å›¾åƒ
+   TestPaper testPaper;      //±¾ÊÓÍ¼ĞèÒªÏÔÊ¾µÄÊÔ¾í
+   public Teacher teacher ;  //Åú¾íÀÏÊ¦
+   public JTextArea showContent;    //ÏÔÊ¾ÊÔÌâÄÚÈİ
+   public ImageJPanel showImage;    //ÏÔÊ¾ÊÔÌâµÄÍ¼Ïñ
    public JRadioButton choiceA;
    public JRadioButton choiceB;
    public JRadioButton choiceC;
-   public JRadioButton choiceD;//æ˜¾ç¤ºé€‰é¡¹å†…å®¹
-   public JButton nextProblem,previousProblem;  //é€‰æ‹©ä¸Šä¸€é¢˜ï¼Œä¸‹ä¸€é¢˜çš„æŒ‰é’®
-   public JButton aProblemSubmit;  //ç¡®è®¤æŸé“é¢˜çš„å›ç­”æˆ–é€‰æ‹©
-   public JButton viewAnswer;    //æŸ¥çœ‹ç­”æ¡ˆ
-   public JButton renewJButton   ;  //é‡æ–°å¼€å§‹ï¼›
-   public JButton submit;  //äº¤å·
-   HandleTestPaper handleTestPaper; //è´Ÿè´£å¤„ç†testPaperè¯•å·ä¸­çš„æ•°æ®
-   public int  totalTime = 0;      //è€ƒè¯•ç”¨æ—¶ï¼ˆå•ä½ç§’ï¼‰
+   public JRadioButton choiceD;//ÏÔÊ¾Ñ¡ÏîÄÚÈİ
+   public JButton nextProblem,previousProblem;  //Ñ¡ÔñÉÏÒ»Ìâ£¬ÏÂÒ»ÌâµÄ°´Å¥
+   public JButton aProblemSubmit;  //È·ÈÏÄ³µÀÌâµÄ»Ø´ğ»òÑ¡Ôñ
+   public JButton viewAnswer;    //²é¿´´ğ°¸
+   public JButton renewJButton   ;  //ÖØĞÂ¿ªÊ¼£»
+   public JButton submit;  //½»¾í
+   HandleTestPaper handleTestPaper; //¸ºÔğ´¦ÀítestPaperÊÔ¾íÖĞµÄÊı¾İ
+   public int  totalTime = 0;      //¿¼ÊÔÓÃÊ±£¨µ¥Î»Ãë£©
    public int  usedTime  = totalTime;
-   public int  usedTime_minute = 0;  //å‰©ä½™æ—¶é—´(åˆ†é’Ÿ)
-   public int  usedTime_second = 0; //å‰©ä½™æ—¶é—´(ç§’)
-   public javax.swing.Timer time;          //è€ƒè¯•è®¡æ—¶å™¨
-   public JLabel showUsedTime   ;          //æ˜¾ç¤ºç”¨æ—¶
-   JLabel testName ;                       //æ˜¾ç¤ºè€ƒè¯•åç§°
-   JFrame f = new JFrame("æ—¶é—´è­¦å‘Š") ; //åˆ›å»ºä¸€ä¸ªçª—ä½“
+   public int  usedTime_minute = 0;  //Ê£ÓàÊ±¼ä(·ÖÖÓ)
+   public int  usedTime_second = 0; //Ê£ÓàÊ±¼ä(Ãë)
+   public javax.swing.Timer time;          //¿¼ÊÔ¼ÆÊ±Æ÷
+   public JLabel showUsedTime   ;          //ÏÔÊ¾ÓÃÊ±
+   JLabel testName ;                       //ÏÔÊ¾¿¼ÊÔÃû³Æ
+   JFrame f = new JFrame("Ê±¼ä¾¯¸æ") ; //´´½¨Ò»¸ö´°Ìå
    public TestPaperView() {
-      time = new Timer(1000,this);//delay:60*1000 æ¯éš”1åˆ†é’Ÿè®¡æ—¶ä¸€æ¬¡ï¼ˆè§¦å‘ActionEventï¼‰æœ¬å®¹å™¨ä½œä¸ºå…¶ç›‘è§†å™¨
+      time = new Timer(1000,this);//delay:60*1000 Ã¿¸ô1·ÖÖÓ¼ÆÊ±Ò»´Î£¨´¥·¢ActionEvent£©±¾ÈİÆ÷×÷ÎªÆä¼àÊÓÆ÷
       initView();
       registerListener();
    } 
@@ -40,44 +40,44 @@ public class TestPaperView extends JPanel implements ActionListener{
       setLayout(new BorderLayout()); 
       showImage = new ImageJPanel();
       showContent = new JTextArea(12,12);
-      showContent.setToolTipText("å¦‚æœé¢˜ä¸­æœ‰å›¾åƒï¼Œåœ¨å›¾ä¸Šå•æœºé¼ æ ‡å¯è°ƒæ•´è§‚çœ‹");
+      showContent.setToolTipText("Èç¹ûÌâÖĞÓĞÍ¼Ïñ£¬ÔÚÍ¼ÉÏµ¥»úÊó±ê¿Éµ÷Õû¹Û¿´");
       showContent.setForeground(Color.blue);
       showContent.setWrapStyleWord(true);
-      showContent.setLineWrap(true); //å›è¡Œè‡ªåŠ¨
-      showContent.setFont(new Font("å®‹ä½“",Font.BOLD,18));
+      showContent.setLineWrap(true); //»ØĞĞ×Ô¶¯
+      showContent.setFont(new Font("ËÎÌå",Font.BOLD,18));
       choiceA = new JRadioButton("A");
       choiceB = new JRadioButton("B");
       choiceC = new JRadioButton("C");
       choiceD = new JRadioButton("D");
-      ButtonGroup group = new ButtonGroup(); //æŒ‰é’®é€‰é¡¹ç»„ï¼ŒåŠ å…¥åçš„æŒ‰é’®åªèƒ½å•é€‰
+      ButtonGroup group = new ButtonGroup(); //°´Å¥Ñ¡Ïî×é£¬¼ÓÈëºóµÄ°´Å¥Ö»ÄÜµ¥Ñ¡
       choiceA.setVisible(false);
       choiceB.setVisible(false);
       choiceC.setVisible(false);
       choiceD.setVisible(false);
-      nextProblem = new JButton("ä¸‹ä¸€é¢˜ç›®");
-      previousProblem = new JButton("ä¸Šä¸€é¢˜ç›®");
-      aProblemSubmit = new JButton("ç¡®è®¤"); 
+      nextProblem = new JButton("ÏÂÒ»ÌâÄ¿");
+      previousProblem = new JButton("ÉÏÒ»ÌâÄ¿");
+      aProblemSubmit = new JButton("È·ÈÏ"); 
       aProblemSubmit.setVisible(false);
-      viewAnswer = new JButton("æŸ¥çœ‹ç­”æ¡ˆ");
+      viewAnswer = new JButton("²é¿´´ğ°¸");
       viewAnswer.setVisible(false);
-      renewJButton = new JButton("å†æ¥ä¸€æ¬¡");
+      renewJButton = new JButton("ÔÙÀ´Ò»´Î");
       renewJButton.setVisible(false);
-      submit = new JButton("äº¤å·");  
+      submit = new JButton("½»¾í");  
       JPanel pNorth = new JPanel();
       pNorth.setBackground(Color.cyan) ;
       showUsedTime = new JLabel();
       testName = new JLabel();
-      testName.setFont(new Font("æ¥·ä½“",Font.BOLD,18));
+      testName.setFont(new Font("¿¬Ìå",Font.BOLD,18));
       f.setVisible(false);
-      f.setSize(400, 400);//è®¾ç½®å¥½å®½é«˜
-      f.setLocationRelativeTo(null);//çª—ä½“å±…ä¸­æ˜¾ç¤º
-      f.setBackground(Color.RED) ;    // å°†èƒŒæ™¯è®¾ç½®æˆç™½è‰²
-      Point p = new Point(500,500) ;  // æŒ‡å®šç»„ä»¶çš„æ˜¾ç¤ºä½ç½®
-      JLabel label1 = new JLabel("è€ƒè¯•æ—¶é—´è¿˜å‰©5åˆ†é’Ÿ");
+      f.setSize(400, 400);//ÉèÖÃºÃ¿í¸ß
+      f.setLocationRelativeTo(null);//´°Ìå¾ÓÖĞÏÔÊ¾
+      f.setBackground(Color.RED) ;    // ½«±³¾°ÉèÖÃ³É°×É«
+      Point p = new Point(500,500) ;  // Ö¸¶¨×é¼şµÄÏÔÊ¾Î»ÖÃ
+      JLabel label1 = new JLabel("¿¼ÊÔÊ±¼ä»¹Ê£5·ÖÖÓ");
       label1.setHorizontalAlignment(0);
       f.add(label1);
       pNorth.add(testName);
-      pNorth.add(new JLabel("å•å‡»ä¸‹ä¸€é¢˜æˆ–ä¸Šä¸€é¢˜æŒ‰é’®å¼€å§‹è€ƒè¯•")); 
+      pNorth.add(new JLabel("µ¥»÷ÏÂÒ»Ìâ»òÉÏÒ»Ìâ°´Å¥¿ªÊ¼¿¼ÊÔ")); 
       pNorth.add(submit);
       pNorth.add(renewJButton);
       pNorth.add(showUsedTime); 
@@ -96,7 +96,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       group.add(choiceA);
       group.add(choiceB);
       group.add(choiceC);
-      group.add(choiceD); //å•é€‰æŒ‰é’®å…¨éƒ¨åŠ å…¥æŒ‰é’®ç»„ï¼Œç¡®ä¿åªæœ‰å•é€‰
+      group.add(choiceD); //µ¥Ñ¡°´Å¥È«²¿¼ÓÈë°´Å¥×é£¬È·±£Ö»ÓĞµ¥Ñ¡
       oneInPSouth.add(choiceA);
       oneInPSouth.add(choiceB);
       oneInPSouth.add(choiceC);
@@ -128,26 +128,26 @@ public class TestPaperView extends JPanel implements ActionListener{
    public void actionPerformed(ActionEvent e){
       usedTime_minute = usedTime/60;
       usedTime_second = usedTime-usedTime_minute*60;
-      showUsedTime.setText("è€ƒè¯•å‰©ä½™æ—¶é—´:"+usedTime_minute+"åˆ†"+usedTime_second+"ç§’");
+      showUsedTime.setText("¿¼ÊÔÊ£ÓàÊ±¼ä:"+usedTime_minute+"·Ö"+usedTime_second+"Ãë");
       if(usedTime == 300){
          f.setVisible(true);
       }
       if(usedTime == 0){
           time.stop();
-          showUsedTime.setText("è¯·äº¤å·");
+          showUsedTime.setText("Çë½»¾í");
           nextProblem.setVisible(false); 
           previousProblem.setVisible(false); 
       }
       usedTime--;
    }
    public void setTestName(String name){
-      testName.setText("ã€"+name+"ã€‘");
+      testName.setText("¡¾"+name+"¡¿");
    }
    public void setTotalTime(int n) {
       totalTime = n;
       usedTime = n;
       usedTime_minute = usedTime/60;
       usedTime_second = n-usedTime_minute*60;
-      showUsedTime.setText("è€ƒè¯•å‰©ä½™æ—¶é—´:"+usedTime_minute+"åˆ†"+usedTime_second+"ç§’");
+      showUsedTime.setText("¿¼ÊÔÊ£ÓàÊ±¼ä:"+usedTime_minute+"·Ö"+usedTime_second+"Ãë");
    }
 }
