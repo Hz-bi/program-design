@@ -44,7 +44,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       showImage = new ImageJPanel();
       showContent = new JTextArea(12,12);
       showContent.setToolTipText("如果题中有图像，在图上单机鼠标可调整观看");
-      showContent.setForeground(Color.white);
+      //showContent.setForeground(Color.white);
       showContent.setWrapStyleWord(true);
       showContent.setLineWrap(true); //回行自动
       showContent.setFont(new Font("宋体",Font.BOLD,18));
@@ -93,11 +93,9 @@ public class TestPaperView extends JPanel implements ActionListener{
       ppWest.add(testName);
       add(ppWest,BorderLayout.WEST);
       JPanel ppEest = new JPanel();
-      ppEest.add(submit);
-      add(ppEest,BorderLayout.EAST);
-
       pNorth.add(renewJButton);
       pNorth.add(showUsedTime);
+      pNorth.add(submit);
       this.add(pNorth,BorderLayout.NORTH);
       JPanel pCenter = new JPanel();
       pCenter.setLayout(new GridLayout(1,2));
