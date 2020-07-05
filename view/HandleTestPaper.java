@@ -47,8 +47,8 @@ public class  HandleTestPaper implements ActionListener{
            view.viewAnswer.setVisible(false);
        }
        if(e.getSource()==view.aProblemSubmit){  //确认一道题目的答案
-           view.viewAnswer.setVisible(true);
            String answer ="";
+
           if(view.choiceA.isSelected()){
              answer = answer+"A";
           }
@@ -66,11 +66,25 @@ public class  HandleTestPaper implements ActionListener{
               (view,"没有试题","消息对话框",JOptionPane.WARNING_MESSAGE);
              return;
           }
-          view.choiceA.setVisible(false);
-          view.choiceB.setVisible(false);
-          view.choiceC.setVisible(false);
-          view.choiceD.setVisible(false); 
-          view.aProblemSubmit.setVisible(false);
+          if(answer != ""){
+              view.viewAnswer.setVisible(true);
+              view.choiceA.setVisible(false);
+              view.choiceB.setVisible(false);
+              view.choiceC.setVisible(false);
+              view.choiceD.setVisible(false);
+              view.aProblemSubmit.setVisible(false);
+           }
+          else{
+              JFrame f = new JFrame(); //创建一个窗体
+              f.setVisible(false);
+              f.setSize(200, 200);//设置好宽高
+              f.setLocationRelativeTo(null);//窗体居中显示
+              f.setBackground(Color.RED) ;    // 将背景设置成白色
+              JLabel label1 = new JLabel("请选择正确答案");
+              label1.setHorizontalAlignment(0);
+              f.add(label1);
+              f.setVisible(true);
+          }
 
           problem.setUserAnswer(answer);
        } 
