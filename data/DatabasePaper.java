@@ -6,7 +6,7 @@
     4.建立数据库test 旗下存放表java和traffic
     5.由excel导入具体数据或导入sql文件夹下的.sql表文件到test数据库中
     6.右键AppWindow.java运行即可启动数据库题库连接
-    Update Latest:SQL动态切换查询表名、jdbc操作高度封装、修复.sql文件读取异常问题
+    Update Latest:与数据库列名保持一致，统一标准
  */
 package data;
 import java.util.*;
@@ -66,12 +66,12 @@ public class DatabasePaper implements GiveTestPaper {
         int index = 0;
         do{ //将数据库题目存储至数组
             subject = rs.getString("题目内容");
-            choiceA = rs.getString("选择A");
-            choiceB = rs.getString("选择B");
-            choiceC = rs.getString("选择C");
-            choiceD = rs.getString("选择D");
+            choiceA = rs.getString("选择项目");
+            choiceB = rs.getString("选择项目1");
+            choiceC = rs.getString("选择项目2");
+            choiceD = rs.getString("选择项目3");
             answer = rs.getString("正确答案");
-            gallery = rs.getString("图片");
+            gallery = rs.getString("题目类型");
             if (choiceA == null) choiceA = "";
             if (choiceB == null) choiceB = "";
             if (choiceC == null) choiceC = "";
