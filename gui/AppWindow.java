@@ -3,10 +3,21 @@ import data.GiveTestPaper;
 import data.RamdomInitTestPaper;
 import data.TestPaper;
 import data.TeacherOne;
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import view.TestPaperView;
 import view.IntegrationView;
 public class AppWindow {
    public static void main(String []args) {
+       try
+       {
+           //设置本属性将改变窗口边框样式定义
+           BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+           org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+       }
+       catch(Exception e)
+       {
+           //TODO exception
+       }
        String testName="";
        IntegrationView integrationView = new IntegrationView();
        GiveTestPaper initTestPaper = new RamdomInitTestPaper(); //创建初始试卷对象
