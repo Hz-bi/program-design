@@ -1,16 +1,16 @@
 package view;
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
+
 public class IntegrationView extends JFrame{
-    JTabbedPane tabbedPane; //ç”¨é€‰é¡¹å¡é›†æˆTestPaperViewè§†å›¾
+    JTabbedPane tabbedPane; //ÓÃÑ¡Ïî¿¨¼¯³ÉTestPaperViewÊÓÍ¼
     public IntegrationView(){
-        tabbedPane= new JTabbedPane(JTabbedPane.NORTH);//å¡åœ¨å·¦ä¾§ 
+        tabbedPane= new JTabbedPane(JTabbedPane.NORTH);//¿¨ÔÚ×ó²à 
         tabbedPane.validate();
         add(tabbedPane,BorderLayout.CENTER); 
-        setTitle("ä»˜æ€»ä¸‡å²");
-        setBounds(100,100,1280,760);//è°ƒæ•´æ€»æ¡†å›¾åˆ†è¾¨ç‡å’Œåˆå§‹ä½ç½®
-        setIconImage(new ImageIcon("è½¯ä»¶å‘å¸ƒ/å›¾åƒç®¡ç†/äºŒåˆºçŒ¿.jpg").getImage());
+        setTitle("¿¼ÊÔÏµÍ³");
+        setBounds(100,100,1280,760);//µ÷Õû×Ü¿òÍ¼·Ö±æÂÊºÍ³õÊ¼Î»ÖÃ
+        setIconImage(new ImageIcon("Èí¼ş·¢²¼/Í¼Ïñ¹ÜÀí/ÀÏÈı´ÎÔªÁË.jpg").getImage());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
