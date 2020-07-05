@@ -3,12 +3,12 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 public class IntegrationView extends JFrame{
-    JTabbedPane tabbedPane; //ÓÃÑ¡Ïî¿¨¼¯³ÉTestPaperViewÊÓÍ¼
+    JTabbedPane tabbedPane; //ç”¨é€‰é¡¹å¡é›†æˆTestPaperViewè§†å›¾
     public IntegrationView(){
-        tabbedPane= new JTabbedPane(JTabbedPane.LEFT);//¿¨ÔÚ×ó²à 
+        tabbedPane= new JTabbedPane(JTabbedPane.NORTH);//å¡åœ¨å·¦ä¾§ 
         tabbedPane.validate();
         add(tabbedPane,BorderLayout.CENTER); 
-        setBounds(100,100,1280,760);//µ÷Õû×Ü¿òÍ¼·Ö±æÂÊºÍ³õÊ¼Î»ÖÃ
+        setBounds(100,100,1280,760);//è°ƒæ•´æ€»æ¡†å›¾åˆ†è¾¨ç‡å’Œåˆå§‹ä½ç½®
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
