@@ -47,7 +47,7 @@
 2. 根据书5.7要求完善代码
 3. GUI修改和功能添加
 
-<img src="https://s1.ax1x.com/2020/07/04/NxAlvj.jpg" alt="NxAlvj.jpg" style="zoom: 33%;" />
+<img src="https://s1.ax1x.com/2020/07/04/NxAlvj.jpg" alt="NxAlvj.jpg" style="zoom: 10%;" />
 
 #### 4、任务安排  
 
