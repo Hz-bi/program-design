@@ -10,6 +10,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    TestPaper testPaper;      //本视图需要显示的试卷
    public Teacher teacher ;  //批卷老师
    public JTextArea showContent;    //显示试题内容
+
    public ImageJPanel showImage;    //显示试题的图像
    public JRadioButton choiceA;
    public JRadioButton choiceB;
@@ -28,7 +29,8 @@ public class TestPaperView extends JPanel implements ActionListener{
    public javax.swing.Timer time;          //考试计时器
    public JLabel showUsedTime   ;          //显示用时
    JLabel testName ;                       //显示考试名称
-   JFrame f = new JFrame("时间警告") ; //创建一个窗体
+   JFrame f1 = new JFrame("时间警告") ; //创建一个窗体
+   JFrame f2 = new JFrame("考前须知") ; //创建一个窗体
    public TestPaperView() {
       time = new Timer(1000,this);//delay:60*1000 每隔1分钟计时一次（触发ActionEvent）本容器作为其监视器
       initView();
@@ -42,7 +44,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       showImage = new ImageJPanel();
       showContent = new JTextArea(12,12);
       showContent.setToolTipText("如果题中有图像，在图上单机鼠标可调整观看");
-      showContent.setForeground(Color.blue);
+      showContent.setForeground(Color.white);
       showContent.setWrapStyleWord(true);
       showContent.setLineWrap(true); //回行自动
       showContent.setFont(new Font("宋体",Font.BOLD,18));
@@ -56,35 +58,47 @@ public class TestPaperView extends JPanel implements ActionListener{
       choiceC.setVisible(false);
       choiceD.setVisible(false);
       nextProblem = new JButton("下一题目");
+      nextProblem.setBorderPainted(false);
+
+
       previousProblem = new JButton("上一题目");
-      aProblemSubmit = new JButton("确认"); 
+      previousProblem.setBorderPainted(false);
+
+      aProblemSubmit = new JButton("确认");
+      aProblemSubmit.setBorderPainted(false);
       aProblemSubmit.setVisible(false);
       viewAnswer = new JButton("查看答案");
       viewAnswer.setVisible(false);
+      viewAnswer.setBorderPainted(false);
       renewJButton = new JButton("再来一次");
+      renewJButton.setBorderPainted(false);
       renewJButton.setVisible(false);
-      submit = new JButton("交卷");  
+      submit = new JButton("交卷");
       submit.setBorderPainted(false);
       submit.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
+
       JPanel pNorth = new JPanel();
       pNorth.setBackground(Color.white) ;
       showUsedTime = new JLabel();
       testName = new JLabel();
       testName.setFont(new Font("楷体",Font.BOLD,18));
-      f.setVisible(false);
-      f.setSize(400, 400);//设置好宽高
-      f.setLocationRelativeTo(null);//窗体居中显示
-      f.setBackground(Color.RED) ;    // 将背景设置成白色
       Point p = new Point(500,500) ;  // 指定组件的显示位置
+      f1.setVisible(false);
+      f1.setSize(400, 400);//设置好宽高
+      f1.setLocationRelativeTo(null);//窗体居中显示
+      f1.setBackground(Color.RED) ;    // 将背景设置成白色
       JLabel label1 = new JLabel("考试时间还剩5分钟");
       label1.setHorizontalAlignment(0);
-      f.add(label1);
-      pNorth.add(testName);
-      pNorth.add(new JLabel("单击下一题或上一题按钮开始考试")); 
-      pNorth.add(submit);
+      JPanel ppWest = new JPanel();
+      ppWest.add(testName);
+      add(ppWest,BorderLayout.WEST);
+      JPanel ppEest = new JPanel();
+      ppEest.add(submit);
+      add(ppEest,BorderLayout.EAST);
+
       pNorth.add(renewJButton);
-      pNorth.add(showUsedTime); 
-      add(pNorth,BorderLayout.NORTH);
+      pNorth.add(showUsedTime);
+      this.add(pNorth,BorderLayout.NORTH);
       JPanel pCenter = new JPanel();
       pCenter.setLayout(new GridLayout(1,2));
       pCenter.add(new JScrollPane(showContent));
@@ -133,7 +147,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       usedTime_second = usedTime-usedTime_minute*60;
       showUsedTime.setText("考试剩余时间:"+usedTime_minute+"分"+usedTime_second+"秒");
       if(usedTime == 300){
-         f.setVisible(true);
+         f1.setVisible(true);
       }
       if(usedTime == 0){
           time.stop();
