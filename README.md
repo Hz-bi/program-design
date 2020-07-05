@@ -10,6 +10,16 @@
 **7.5     第二阶段任务按时完成，确定第三阶段方向与人员安排。**
 
 ------
+## 项目环境依赖
+------  
+
+**集成开发环境IDE:IntelliJ IDEA 2019.3.1 x64**   
+**数据库及管理工具:MySQL 8.0、Navicat Premium 12**  
+**库文件和驱动依赖:jxl-2.6.jar、mysql-connector-java-8.0.20.jar**  
+**远程协作开发平台:Github、Teamviewer**  
+**UML类图设计工具:Microsoft Visio 2019、Diagram**
+
+------  
 
 #### 1、源码启动须知   
 1.将jxl.jar文件复制到jre\lib\ext中或通过IDE设置加载jar包  
