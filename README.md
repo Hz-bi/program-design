@@ -17,28 +17,7 @@
 **UML类图设计工具:Microsoft Visio 2019、Diagram**  
 **下载并导入二级工程目录后，启动AppWindow.java即可运行项目**
 
-## Github操作指导  
-
-1.上传或更新文件时，根据以下步骤操作，点击upload files
-
-![Nxkplj.png](https://s1.ax1x.com/2020/07/04/Nxkplj.png)
-
-2.进入上传页面，填写对应的更新简要和具体描述（下面示例为，提交程序设计.docx）
-
-<img src="https://s1.ax1x.com/2020/07/04/NxkQn1.png" alt="NxkQn1.png" style="zoom:50%;" />
-
-3.同时上传成功之后可在commits看到自己的提交
-
-<img src="https://s1.ax1x.com/2020/07/04/NxkhBq.png" alt="NxkhBq.png" style="zoom:50%;" />
-
-<img src="https://s1.ax1x.com/2020/07/04/NxkIEV.png" alt="NxkIEV.png" style="zoom:50%;" />
-
 ##  项目任务设计流程  
-
-整体分为三步：
-1. 修改现有代码明显bug
-2. 根据书5.7要求完善代码
-3. GUI修改和功能添加  
 ### 第一阶段 7.2-7.3 统一配置环境并修复程序缺陷
 1. hh、xx    --- 配置环境
 2. tws       --- 配置环境
@@ -57,3 +36,19 @@
 3. jsh       ---美化Swing界面
 4. fjh       ---增加程序初始界面并完善数据库
 5. tws、jsh  ---制作ppt
+
+## Github操作指导  
+
+1.上传或更新文件时，根据以下步骤操作，点击upload files
+
+![Nxkplj.png](https://s1.ax1x.com/2020/07/04/Nxkplj.png)
+
+2.进入上传页面，填写对应的更新简要和具体描述（下面示例为，提交程序设计.docx）
+
+<img src="https://s1.ax1x.com/2020/07/04/NxkQn1.png" alt="NxkQn1.png" style="zoom:50%;" />
+
+3.同时上传成功之后可在commits看到自己的提交
+
+<img src="https://s1.ax1x.com/2020/07/04/NxkhBq.png" alt="NxkhBq.png" style="zoom:50%;" />
+
+<img src="https://s1.ax1x.com/2020/07/04/NxkIEV.png" alt="NxkIEV.png" style="zoom:50%;" />
