@@ -40,7 +40,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    public JLabel showUsedTime   ;          //显示用时
    JLabel testName ;                       //显示考试名称
    JFrame f1 = new JFrame("时间警告") ; //创建一个窗体
-   JFrame f2 = new JFrame("考前须知") ; //创建一个窗体
+   public JFrame f2 = new JFrame("考前须知") ; //创建一个窗体
    JTextArea mustKnow = new JTextArea();
    public TestPaperView() {
       time = new Timer(1000,this);//delay:60*1000 每隔1分钟计时一次（触发ActionEvent）本容器作为其监视器
@@ -99,10 +99,14 @@ public class TestPaperView extends JPanel implements ActionListener{
       testName = new JLabel();
       testName.setFont(new Font("楷体",Font.BOLD,18));
       Point p = new Point(500,500) ;  // 指定组件的显示位置
+      JLabel label1 = new JLabel("考试时间还剩5分钟");
+      label1.setHorizontalAlignment(0);
+      label1.setFont(new java.awt.Font("Dialog", 1, 15));
       f1.setVisible(false);
-      f1.setSize(400, 400);//设置好宽高
+      f1.setSize(400, 200);//设置好宽高
       f1.setLocationRelativeTo(null);//窗体居中显示
       f1.setBackground(Color.RED) ;    // 将背景设置成白色
+      f1.add(label1);
 
 
       f2.setSize(400, 500);//设置好宽高
@@ -128,8 +132,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       f2.add(new JScrollPane(mustKnow));
       f2.setVisible(true);
 
-      JLabel label1 = new JLabel("考试时间还剩5分钟");
-      label1.setHorizontalAlignment(0);
+
       JPanel ppWest = new JPanel();
       ppWest.add(testName);
       add(ppWest,BorderLayout.WEST);
@@ -189,7 +192,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       usedTime_minute = usedTime/60;
       usedTime_second = usedTime-usedTime_minute*60;
       showUsedTime.setText("考试剩余时间:"+usedTime_minute+"分"+usedTime_second+"秒");
-      if(usedTime == 300){
+      if(usedTime == 899){
          f1.setVisible(true);
       }
       if(usedTime == 0){
