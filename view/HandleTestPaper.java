@@ -125,6 +125,7 @@ public class  HandleTestPaper implements ActionListener{
               view.aProblemSubmit.setVisible(true);
               view.showContent.setText(problem.getContent());
               view.showContent.setVisible(true);
+              view.showContent.setEditable(false);
               if(problem.getIsChoice()) {
                    handelChoice();
               }
