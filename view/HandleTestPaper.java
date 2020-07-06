@@ -18,8 +18,27 @@ public class  HandleTestPaper implements ActionListener{
        this.testPaper = testPaper;
     }
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==view.stratExam){
+            view.time.start(); //开始计时
+            view.f2.setVisible(false);
+            view.stratExam.setVisible(false);
+            view.nextProblem.setVisible(true);
+            view.previousProblem.setVisible(true);
+            //view.wa.setVisible(false);
+
+            if(testPaper!=null){
+                problem = testPaper.nextProblem();
+                handleProblem(problem);
+            }
+            else {
+                JOptionPane.showMessageDialog
+                        (view,"没有试题","消息对话框",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
        if(e.getSource()==view.nextProblem){ 
-          view.time.start(); //开始计时
+          //view.time.start(); //开始计时
           if(testPaper!=null){
             problem = testPaper.nextProblem();
             handleProblem(problem);
@@ -30,7 +49,7 @@ public class  HandleTestPaper implements ActionListener{
           }
        } 
        if(e.getSource()==view.previousProblem){
-          view.time.start(); //开始计时
+         // view.time.start(); //开始计时
           if(testPaper!=null){
             problem = testPaper.previousProblem();
             handleProblem(problem);

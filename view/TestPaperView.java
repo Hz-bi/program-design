@@ -2,6 +2,11 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import data.*;
 import data.TestPaper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
@@ -21,6 +26,11 @@ public class TestPaperView extends JPanel implements ActionListener{
    public JButton viewAnswer;    //查看答案
    public JButton renewJButton   ;  //重新开始；
    public JButton submit;  //交卷
+
+   public JButton stratExam;  //开始考试
+
+
+
    HandleTestPaper handleTestPaper; //负责处理testPaper试卷中的数据
    public int  totalTime = 0;      //考试用时（单位秒）
    public int  usedTime  = totalTime;
@@ -31,6 +41,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    JLabel testName ;                       //显示考试名称
    JFrame f1 = new JFrame("时间警告") ; //创建一个窗体
    JFrame f2 = new JFrame("考前须知") ; //创建一个窗体
+   JTextArea mustKnow = new JTextArea();
    public TestPaperView() {
       time = new Timer(1000,this);//delay:60*1000 每隔1分钟计时一次（触发ActionEvent）本容器作为其监视器
       initView();
@@ -44,7 +55,6 @@ public class TestPaperView extends JPanel implements ActionListener{
       showImage = new ImageJPanel();
       showContent = new JTextArea(12,12);
       showContent.setToolTipText("如果题中有图像，在图上单机鼠标可调整观看");
-      //showContent.setForeground(Color.white);
       showContent.setWrapStyleWord(true);
       showContent.setLineWrap(true); //回行自动
       showContent.setFont(new Font("宋体",Font.BOLD,18));
@@ -57,12 +67,18 @@ public class TestPaperView extends JPanel implements ActionListener{
       choiceB.setVisible(false);
       choiceC.setVisible(false);
       choiceD.setVisible(false);
+
+      stratExam = new JButton("确认并开始考试");
+      stratExam.setBorderPainted(false);
+
       nextProblem = new JButton("下一题目");
       nextProblem.setBorderPainted(false);
+      nextProblem.setVisible(false);
 
 
       previousProblem = new JButton("上一题目");
       previousProblem.setBorderPainted(false);
+      previousProblem.setVisible(false);
 
       aProblemSubmit = new JButton("确认");
       aProblemSubmit.setBorderPainted(false);
@@ -87,6 +103,31 @@ public class TestPaperView extends JPanel implements ActionListener{
       f1.setSize(400, 400);//设置好宽高
       f1.setLocationRelativeTo(null);//窗体居中显示
       f1.setBackground(Color.RED) ;    // 将背景设置成白色
+
+
+      f2.setSize(400, 500);//设置好宽高
+      f2.setLocationRelativeTo(null);//窗体居中显示
+      f2.setBackground(Color.white) ;    // 将背景设置成白色
+      f2.add(stratExam,BorderLayout.SOUTH);
+      mustKnow.setToolTipText("考生须知");
+      mustKnow.setWrapStyleWord(true);
+      mustKnow.setLineWrap(true); //回行自动
+      mustKnow.setFont(new Font("宋体",Font.BOLD,18));
+      BufferedReader br = null;
+      try {
+         br = new BufferedReader(new FileReader("jar/考前须知.txt"));
+      } catch (FileNotFoundException e) {
+         e.printStackTrace();
+      }
+      try {
+         mustKnow.read(br,"mustKnow");
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      mustKnow.setEditable(false);
+      f2.add(new JScrollPane(mustKnow));
+      f2.setVisible(true);
+
       JLabel label1 = new JLabel("考试时间还剩5分钟");
       label1.setHorizontalAlignment(0);
       JPanel ppWest = new JPanel();
@@ -106,6 +147,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       pSouth.setLayout(new GridLayout(2,1));
       JPanel oneInPSouth = new JPanel();
       JPanel twoInPSouth = new JPanel();
+
       oneInPSouth.setBackground(Color.green) ;
       oneInPSouth.setBackground(Color.pink) ;
       group.add(choiceA);
@@ -118,15 +160,18 @@ public class TestPaperView extends JPanel implements ActionListener{
       oneInPSouth.add(choiceD);
       oneInPSouth.add(aProblemSubmit);
       oneInPSouth.add(viewAnswer);
+
       twoInPSouth.add(nextProblem);
       twoInPSouth.add(previousProblem);
       pSouth.add(oneInPSouth);
       pSouth.add(twoInPSouth);          
       add(pSouth,BorderLayout.SOUTH);
+
       validate();
    }
    public void registerListener(){
       handleTestPaper = new HandleTestPaper();
+      stratExam.addActionListener(handleTestPaper);
       nextProblem.addActionListener(handleTestPaper);
       previousProblem.addActionListener(handleTestPaper);
       aProblemSubmit.addActionListener(handleTestPaper);
