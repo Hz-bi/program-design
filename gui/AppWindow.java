@@ -1,6 +1,6 @@
 package gui;
 import data.GiveTestPaper;
-import data.RamdomInitTestPaper;
+import data.GiveTP;
 import data.TestPaper;
 import data.TeacherOne;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
