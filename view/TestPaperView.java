@@ -192,7 +192,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       usedTime_minute = usedTime/60;
       usedTime_second = usedTime-usedTime_minute*60;
       showUsedTime.setText("øº ‘ £”‡ ±º‰:"+usedTime_minute+"∑÷"+usedTime_second+"√Î");
-      if(usedTime == 899){
+      if(usedTime == 300){
          f1.setVisible(true);
       }
       if(usedTime == 0){
