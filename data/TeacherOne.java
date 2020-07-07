@@ -24,9 +24,10 @@ public class TeacherOne implements Teacher {
           int r =(int)(result*100);
           String s ="共有:"+p.length+"道题."+
                     "您做对了"+correctAmount+"题,"+
-                    "正确率大约"+r+"%";
+                    "正确率大约"+r+"%。"+"考试已结束,自动退出。";
           JLabel mess = new JLabel(s);
           JOptionPane.showMessageDialog(null,mess,"成绩",JOptionPane.PLAIN_MESSAGE );
+          System.exit(0);
     }
     private boolean compare(String s,String t) {
         boolean isTrue = true;
