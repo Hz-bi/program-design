@@ -58,6 +58,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       showContent.setWrapStyleWord(true);
       showContent.setLineWrap(true); //回行自动
       showContent.setFont(new Font("宋体",Font.BOLD,18));
+
       choiceA = new JRadioButton("A");
       choiceB = new JRadioButton("B");
       choiceC = new JRadioButton("C");
@@ -109,14 +110,15 @@ public class TestPaperView extends JPanel implements ActionListener{
       f1.add(label1);
 
 
-      f2.setSize(400, 500);//设置好宽高
+      /*f2.setSize(400, 500);//设置好宽高
       f2.setLocationRelativeTo(null);//窗体居中显示
       f2.setBackground(Color.white) ;    // 将背景设置成白色
-      f2.add(stratExam,BorderLayout.SOUTH);
-      mustKnow.setToolTipText("考生须知");
-      mustKnow.setWrapStyleWord(true);
-      mustKnow.setLineWrap(true); //回行自动
-      mustKnow.setFont(new Font("宋体",Font.BOLD,18));
+      f2.add(stratExam,BorderLayout.SOUTH);*/
+      showContent.setToolTipText("考生须知");
+      showContent.setWrapStyleWord(true);
+      showContent.setLineWrap(true); //回行自动
+      showContent.setFont(new Font("宋体",Font.BOLD,18));
+      showContent.setVisible(true);
       BufferedReader br = null;
       try {
          br = new BufferedReader(new FileReader("jar/考前须知.txt"));
@@ -124,15 +126,15 @@ public class TestPaperView extends JPanel implements ActionListener{
          e.printStackTrace();
       }
       try {
-         mustKnow.read(br,"mustKnow");
+         showContent.read(br,"mustKnow");
       } catch (IOException e) {
          e.printStackTrace();
       }
-      mustKnow.setEditable(false);
-      f2.add(new JScrollPane(mustKnow));
-      f2.setVisible(true);
+      showContent.setEditable(false);
 
 
+
+      //add(new JScrollPane(mustKnow),BorderLayout.CENTER);
       JPanel ppWest = new JPanel();
       ppWest.add(testName);
       add(ppWest,BorderLayout.WEST);
@@ -144,6 +146,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       JPanel pCenter = new JPanel();
       pCenter.setLayout(new GridLayout(1,2));
       pCenter.add(new JScrollPane(showContent));
+
       pCenter.add(showImage);
       add(pCenter,BorderLayout.CENTER);
       JPanel pSouth = new JPanel();
@@ -166,10 +169,13 @@ public class TestPaperView extends JPanel implements ActionListener{
 
       twoInPSouth.add(nextProblem);
       twoInPSouth.add(previousProblem);
+      twoInPSouth.add(stratExam);
       pSouth.add(oneInPSouth);
-      pSouth.add(twoInPSouth);          
+      pSouth.add(twoInPSouth);
+
       add(pSouth,BorderLayout.SOUTH);
 
+      //pCenter.add(new JScrollPane(showContent));
       validate();
    }
    public void registerListener(){

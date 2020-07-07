@@ -21,7 +21,8 @@ public class  HandleTestPaper implements ActionListener{
 
         if(e.getSource()==view.stratExam){
             view.time.start(); //开始计时
-            view.f2.setVisible(false);
+            view.mustKnow.setVisible(false);
+            view.showContent.setVisible(false);
             view.stratExam.setVisible(false);
             view.nextProblem.setVisible(true);
             view.previousProblem.setVisible(true);
