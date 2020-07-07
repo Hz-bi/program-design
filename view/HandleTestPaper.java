@@ -110,12 +110,12 @@ public class  HandleTestPaper implements ActionListener{
        } 
        if(e.getSource()==view.submit){
            testPaper.acceptTeacher(view.teacher); //试卷让老师批阅
-           view.renewJButton.setVisible(true);
+           //view.renewJButton.setVisible(true);
            view.submit.setVisible(false);
            view.time.stop(); 
            view.showUsedTime.setText("交卷了");
        } 
-       if(e.getSource()==view.renewJButton) {     //再来一套题目
+       /*if(e.getSource()==view.renewJButton) {     //再来一套题目
            view.showUsedTime.setText("");
            view.usedTime = view.totalTime;
            view.showUsedTime.setText("考试剩余时间:"+view.totalTime);
@@ -130,7 +130,7 @@ public class  HandleTestPaper implements ActionListener{
            testPaper=initTestPaper.getTestPaper(problemSource,testPaper.getProlemAmount());
            view.renewJButton.setVisible(false);
            view.submit.setVisible(true);  
-       }
+       }*/
        view.choiceA.setSelected(false);
        view.choiceB.setSelected(false);
        view.choiceC.setSelected(false);

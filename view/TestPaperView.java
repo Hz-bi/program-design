@@ -24,7 +24,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    public JButton nextProblem,previousProblem;  //选择上一题，下一题的按钮
    public JButton aProblemSubmit;  //确认某道题的回答或选择
    public JButton viewAnswer;    //查看答案
-   public JButton renewJButton   ;  //重新开始；
+   //public JButton renewJButton   ;  //重新开始；
    public JButton submit;  //交卷
 
    public JButton stratExam;  //开始考试
@@ -87,9 +87,9 @@ public class TestPaperView extends JPanel implements ActionListener{
       viewAnswer = new JButton("查看答案");
       viewAnswer.setVisible(false);
       viewAnswer.setBorderPainted(false);
-      renewJButton = new JButton("再来一次");
+     /* renewJButton = new JButton("再来一次");
       renewJButton.setBorderPainted(false);
-      renewJButton.setVisible(false);
+      renewJButton.setVisible(false);*/
       submit = new JButton("交卷");
       submit.setBorderPainted(false);
       submit.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
@@ -139,7 +139,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       ppWest.add(testName);
       add(ppWest,BorderLayout.WEST);
       JPanel ppEest = new JPanel();
-      pNorth.add(renewJButton);
+      //pNorth.add(renewJButton);
       pNorth.add(showUsedTime);
       pNorth.add(submit);
       this.add(pNorth,BorderLayout.NORTH);
@@ -186,7 +186,7 @@ public class TestPaperView extends JPanel implements ActionListener{
       aProblemSubmit.addActionListener(handleTestPaper);
       viewAnswer.addActionListener(handleTestPaper);
       submit.addActionListener(handleTestPaper);
-      renewJButton.addActionListener(handleTestPaper);
+      //renewJButton.addActionListener(handleTestPaper);
       handleTestPaper.setView(this);
    }
    public void setTestPaper(TestPaper testPaper) {
