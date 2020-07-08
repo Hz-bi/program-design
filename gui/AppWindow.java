@@ -11,7 +11,7 @@ public class AppWindow {
    public static void main(String []args) {
        try
        {
-           //è®¾ç½®æœ¬å±æ€§å°†æ”¹å˜çª—å£è¾¹æ¡†æ ·å¼å®šä¹‰
+           //ÉèÖÃ±¾ÊôĞÔ½«¸Ä±ä´°¿Ú±ß¿òÑùÊ½¶¨Òå
            BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
            org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
        }
@@ -21,23 +21,23 @@ public class AppWindow {
        }
        String testName="";
        IntegrationView integrationView = new IntegrationView();
-       GiveTestPaper initTestPaper = new GiveTP(); //åˆ›å»ºåˆå§‹è¯•å·å¯¹è±¡
-       TestPaper testPaper= initTestPaper.getTestPaper("è½¯ä»¶å‘å¸ƒ/é¢˜åº“/äº¤é€šç†è®º.xls",5);   //å¾—åˆ°æœ‰5ä¸ªé¢˜ç›®çš„è¯•å·
+       GiveTestPaper initTestPaper = new GiveTP(); //´´½¨³õÊ¼ÊÔ¾í¶ÔÏó
+       TestPaper testPaper= initTestPaper.getTestPaper("Èí¼ş·¢²¼/Ìâ¿â/½»Í¨ÀíÂÛ.xls",5);   //µÃµ½ÓĞ5¸öÌâÄ¿µÄÊÔ¾í
        TestPaperView testView = new TestPaperView();
-       testView.setTestPaper(testPaper);        //è®¾ç½®è¯•å·
-       testView.setTeacher(new TeacherOne()); //è®¾ç½®é˜…å·è€å¸ˆ
-       testName = "äº¤é€šæ³•è®­ç»ƒ";
+       testView.setTestPaper(testPaper);        //ÉèÖÃÊÔ¾í
+       testView.setTeacher(new TeacherOne()); //ÉèÖÃÔÄ¾íÀÏÊ¦
+       testName = "½»Í¨·¨ÑµÁ·";
        testView.setTestName(testName);
-       testView.setTotalTime(900);//è€ƒè¯•æ—¶é—´15åˆ†é’Ÿ,900
+       testView.setTotalTime(900);//¿¼ÊÔÊ±¼ä15·ÖÖÓ,900
        integrationView.addTestPaperView(testName,testView);
-       initTestPaper = new GiveJTP(); //åˆ›å»ºåˆå§‹è¯•å·å¯¹è±¡
-       testPaper= initTestPaper.getTestPaper("è½¯ä»¶å‘å¸ƒ/é¢˜åº“/javaåŸºç¡€.xls",6);
+       initTestPaper = new GiveJTP(); //´´½¨³õÊ¼ÊÔ¾í¶ÔÏó
+       testPaper= initTestPaper.getTestPaper("Èí¼ş·¢²¼/Ìâ¿â/java»ù´¡.xls",6);
        testView = new TestPaperView();
        testView.setTestPaper(testPaper);        
        testView.setTeacher(new TeacherOne());
-       testName = "Javaè®­ç»ƒ"; 
+       testName = "JavaÑµÁ·"; 
        testView.setTestName(testName);
-       testView.setTotalTime(600);//è€ƒè¯•æ—¶é—´10åˆ†é’Ÿï¼Œ600
+       testView.setTotalTime(600);//¿¼ÊÔÊ±¼ä10·ÖÖÓ£¬600
        integrationView.addTestPaperView(testName,testView);
    }
 }
