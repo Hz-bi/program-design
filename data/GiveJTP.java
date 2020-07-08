@@ -10,37 +10,37 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Random;
-public class GiveJTP implements GiveTestPaper{                  //³éÈ¡ÌâºÅÎª3µÄ±¶ÊıµÄÌâÄ¿
-    TestPaper testPaper ;//ÊÔ¾í
+public class GiveJTP implements GiveTestPaper{                  //Javaè€ƒè¯•å‡ºå·ç”¨ç±»
+    TestPaper testPaper ;//è¯•å·
     File fileExcel;
     InputStream in = null;
-    Problem [] problem; //×é³ÉÊÔ¾íµÄÒ»Ì×Ìâ£¨problemµÄµ¥Ôª´æ·ÅÒ»µÀÊÔÌâ¼´Ò»¸öProblem¶ÔÏó£©
-    Workbook wb = null;  //·â×°Excel,WorkbookÊÇjxl°üÖĞµÄÀà
-    Sheet sheet = null;  //·â×°ExcelÖĞµÄsheet£¬SheetÊÇjxl°üÖĞµÄÀà
-    LinkedList<Integer> list;     //³éÈ¡ÊÔÌâÊ±ÓÃ
+    Problem [] problem; //ç»„æˆè¯•å·çš„ä¸€å¥—é¢˜ï¼ˆproblemçš„å•å…ƒå­˜æ”¾ä¸€é“è¯•é¢˜å³ä¸€ä¸ªProblemå¯¹è±¡ï¼‰
+    Workbook wb = null;  //å°è£…Excel,Workbookæ˜¯jxlåŒ…ä¸­çš„ç±»
+    Sheet sheet = null;  //å°è£…Excelä¸­çš„sheetï¼ŒSheetæ˜¯jxlåŒ…ä¸­çš„ç±»
+    LinkedList<Integer> list;     //æŠ½å–è¯•é¢˜æ—¶ç”¨
     public GiveJTP(){
         testPaper = new TestPaper();
         list = new LinkedList<Integer>();
     }
     public TestPaper getTestPaper(String excelFileName,int amount) {
-        int c=0;                                                            //0ÎªÄ¬ÈÏÖµ¡ª¡ª¡ª¡ªËæ»úÑ¡Ìâ
-        //´óÓÚ0¡ª¡ª¡ª¡ªË³ĞòÑ¡Ìâ
-        //Ğ¡ÓÚ0¡ª¡ª¡ª¡ª3µÄ±¶ÊıÑ¡Ìâ
-        boolean b =setExcel(excelFileName);  //ÉèÖÃÓÃ»§´æ·ÅÊÔÌâµÄµç×Ó±í¸ñ
+        int c=0;                                                            //0ä¸ºé»˜è®¤å€¼â€”â€”â€”â€”éšæœºé€‰é¢˜
+        //å¤§äº0â€”â€”â€”â€”é¡ºåºé€‰é¢˜
+        //å°äº0â€”â€”â€”â€”3çš„å€æ•°é€‰é¢˜
+        boolean b =setExcel(excelFileName);  //è®¾ç½®ç”¨æˆ·å­˜æ”¾è¯•é¢˜çš„ç”µå­è¡¨æ ¼
         if(b) {
             try {
-                GiveProblem_2(amount,c);//Ëæ»ú¸ø³öamountµÀÊÔÌâ£¬¼ûÀàºóÃæµÄGiveProblem_1·½·¨
+                GiveProblem_2(amount,c);//éšæœºç»™å‡ºamounté“è¯•é¢˜ï¼Œè§ç±»åé¢çš„GiveProblem_1æ–¹æ³•
             }
             catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("ÊÔÌâ±ØĞëÓĞÀàĞÍ£¬Çë¼ì²éÌâ¿â");
+                System.out.println("è¯•é¢˜å¿…é¡»æœ‰ç±»å‹ï¼Œè¯·æ£€æŸ¥é¢˜åº“");
                 System.exit(0);
             }
-            testPaper.setProblem(problem);//ÊÔ¾íÉÏÉèÖÃµÄÒ»Ì×ÊÔÌâÊÇproblem
-            return testPaper;         //·µ»ØÊÔ¾í
+            testPaper.setProblem(problem);//è¯•å·ä¸Šè®¾ç½®çš„ä¸€å¥—è¯•é¢˜æ˜¯problem
+            return testPaper;         //è¿”å›è¯•å·
         }
         else {
             JOptionPane.showMessageDialog
-                    (null,"Ã»ÓĞÔ¤±¸Ìâ¿â","ÏûÏ¢¶Ô»°¿ò",JOptionPane.WARNING_MESSAGE);
+                    (null,"æ²¡æœ‰é¢„å¤‡é¢˜åº“","æ¶ˆæ¯å¯¹è¯æ¡†",JOptionPane.WARNING_MESSAGE);
             return null;
         }
     }
@@ -49,11 +49,11 @@ public class GiveJTP implements GiveTestPaper{                  //³éÈ¡ÌâºÅÎª3µÄ±
         try {
             fileExcel =new File(excelFileName);
             in =new FileInputStream(fileExcel);
-            testPaper.setProblemSource(fileExcel.getAbsolutePath());//ÊÔ¾íÉèÖÃÌâ¿âÀ´Ô´
+            testPaper.setProblemSource(fileExcel.getAbsolutePath());//è¯•å·è®¾ç½®é¢˜åº“æ¥æº
         }
         catch(IOException exp){
             JOptionPane.showMessageDialog
-                    (null,"Ã»ÓĞÔ¤±¸Ìâ¿âExcel","ÏûÏ¢¶Ô»°¿ò",JOptionPane.WARNING_MESSAGE);
+                    (null,"æ²¡æœ‰é¢„å¤‡é¢˜åº“Excel","æ¶ˆæ¯å¯¹è¯æ¡†",JOptionPane.WARNING_MESSAGE);
             b = false;
         }
         try {
@@ -68,41 +68,41 @@ public class GiveJTP implements GiveTestPaper{                  //³éÈ¡ÌâºÅÎª3µÄ±
     private void GiveProblem_2(int amount,int choi){
         if(wb==null) {
             JOptionPane.showMessageDialog
-                    (null, "Ã»ÓĞÔ¤±¸Ìâ¿âExcel", "ÏûÏ¢¶Ô»°¿ò", JOptionPane.WARNING_MESSAGE);
+                    (null, "æ²¡æœ‰é¢„å¤‡é¢˜åº“Excel", "æ¶ˆæ¯å¯¹è¯æ¡†", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        sheet = wb.getSheet(0);//µÃµ½ExcelÖĞµÄµÚÒ»¸ösheet£¨Ë÷Òı´Ó0¿ªÊ¼£©
-        int rowsAmount = sheet.getRows();     //µÃµ½sheetµÄ×ÜĞĞÊı
-        //×¢ÒâÔ­Ê¼Excel±íÖĞsheetÖĞµÚ0ĞĞ²»ÊÇÊÔÌâ£¬ÊÇÓÃ»§ÊäÈëµÄËµÃ÷
-        int realAmount = Math.min(amount,rowsAmount-1);//Êµ¼Ê³éÈ¡µÄÊÔÌâÊıÁ¿
-        problem = new Problem[realAmount];              //ÓÃÓÚ´æ·ÅÊÔÌâµÄÊı×éproblem
+        sheet = wb.getSheet(0);//å¾—åˆ°Excelä¸­çš„ç¬¬ä¸€ä¸ªsheetï¼ˆç´¢å¼•ä»0å¼€å§‹ï¼‰
+        int rowsAmount = sheet.getRows();     //å¾—åˆ°sheetçš„æ€»è¡Œæ•°
+        //æ³¨æ„åŸå§‹Excelè¡¨ä¸­sheetä¸­ç¬¬0è¡Œä¸æ˜¯è¯•é¢˜ï¼Œæ˜¯ç”¨æˆ·è¾“å…¥çš„è¯´æ˜
+        int realAmount = Math.min(amount,rowsAmount-1);//å®é™…æŠ½å–çš„è¯•é¢˜æ•°é‡
+        problem = new Problem[realAmount];              //ç”¨äºå­˜æ”¾è¯•é¢˜çš„æ•°ç»„problem
         if(choi==0) {
             list.clear();
-            for(int i=0;i<rowsAmount-1;i++){  //½«1ÖÁrowsAmount-1Êı×Ö·ÅÈëÁ´±í
+            for(int i=0;i<rowsAmount-1;i++){  //å°†1è‡³rowsAmount-1æ•°å­—æ”¾å…¥é“¾è¡¨
                 list.add(i+1);
             }
             Random random=new Random();
             for(int i=0;i<problem.length;i++) {
-                int m = random.nextInt(list.size());//[0,list.size())ÖĞÒ»¸öËæ»úÊı
-                int index =list.remove(m);//É¾³ılistµÄµÚm¸ö½Úµã£¬Í¬Ê±µÃ½ÚµãÊı×Ö
-                Cell [] cell = sheet.getRow(index); //·µ»ØsheetÖĞµÄµÚindexĞĞ
-                //×¢ÒâÔ­Ê¼Excel±íÖĞsheetÖĞµÚ0ĞĞ²»ÊÇÊÔÌâ£¬ÊÇÓÃ»§ÊäÈëµÄËµÃ÷
-                //cellµÄµÚ0ÁĞÊÇÊÔÌâÄÚÈİ£¬Ë÷Òı´Ó0¿ªÊ¼
+                int m = random.nextInt(list.size());//[0,list.size())ä¸­ä¸€ä¸ªéšæœºæ•°
+                int index =list.remove(m);//åˆ é™¤listçš„ç¬¬mä¸ªèŠ‚ç‚¹ï¼ŒåŒæ—¶å¾—èŠ‚ç‚¹æ•°å­—
+                Cell [] cell = sheet.getRow(index); //è¿”å›sheetä¸­çš„ç¬¬indexè¡Œ
+                //æ³¨æ„åŸå§‹Excelè¡¨ä¸­sheetä¸­ç¬¬0è¡Œä¸æ˜¯è¯•é¢˜ï¼Œæ˜¯ç”¨æˆ·è¾“å…¥çš„è¯´æ˜
+                //cellçš„ç¬¬0åˆ—æ˜¯è¯•é¢˜å†…å®¹ï¼Œç´¢å¼•ä»0å¼€å§‹
                 problem[i] = new Problem();
                 Question(problem[i],i,cell);
             }
         }
         else if(choi<0) {
             list.clear();
-            for (int i = 1; i <= rowsAmount - 1; i++) {  //½«1ÖÁrowsAmount-1ÖĞ3µÄ±¶Êı·ÅÈëÁ´±í
+            for (int i = 1; i <= rowsAmount - 1; i++) {  //å°†1è‡³rowsAmount-1ä¸­3çš„å€æ•°æ”¾å…¥é“¾è¡¨
                 if (i % 3 == 0)
                     list.add(i);
             }
             for (int i = 0; i < problem.length; i++) {
-                int index = list.remove(0);//É¾³ılistµÄµÚ0¸ö½Úµã£¬Í¬Ê±µÃ½ÚµãÊı×Ö
+                int index = list.remove(0);//åˆ é™¤listçš„ç¬¬0ä¸ªèŠ‚ç‚¹ï¼ŒåŒæ—¶å¾—èŠ‚ç‚¹æ•°å­—
                 Cell[] cell = sheet.getRow(index);
-                //×¢ÒâÔ­Ê¼Excel±íÖĞsheetÖĞµÚ0ĞĞ²»ÊÇÊÔÌâ£¬ÊÇÓÃ»§ÊäÈëµÄËµÃ÷
-                //cellµÄµÚ0ÁĞÊÇÊÔÌâÄÚÈİ£¬Ë÷Òı´Ó0¿ªÊ¼
+                //æ³¨æ„åŸå§‹Excelè¡¨ä¸­sheetä¸­ç¬¬0è¡Œä¸æ˜¯è¯•é¢˜ï¼Œæ˜¯ç”¨æˆ·è¾“å…¥çš„è¯´æ˜
+                //cellçš„ç¬¬0åˆ—æ˜¯è¯•é¢˜å†…å®¹ï¼Œç´¢å¼•ä»0å¼€å§‹
                 problem[i] = new Problem();
                 Question(problem[i],i,cell);
 
@@ -110,9 +110,9 @@ public class GiveJTP implements GiveTestPaper{                  //³éÈ¡ÌâºÅÎª3µÄ±
         }
         else{
             for(int i=0;i<problem.length;i++) {
-                Cell [] cell = sheet.getRow(i+1); //·µ»ØsheetÖĞµÄµÚindexĞĞ
-                //×¢ÒâÔ­Ê¼Excel±íÖĞsheetÖĞµÚ0ĞĞ²»ÊÇÊÔÌâ£¬ÊÇÓÃ»§ÊäÈëµÄËµÃ÷
-                //cellµÄµÚ0ÁĞÊÇÊÔÌâÄÚÈİ£¬Ë÷Òı´Ó0¿ªÊ¼
+                Cell [] cell = sheet.getRow(i+1); //è¿”å›sheetä¸­çš„ç¬¬indexè¡Œ
+                //æ³¨æ„åŸå§‹Excelè¡¨ä¸­sheetä¸­ç¬¬0è¡Œä¸æ˜¯è¯•é¢˜ï¼Œæ˜¯ç”¨æˆ·è¾“å…¥çš„è¯´æ˜
+                //cellçš„ç¬¬0åˆ—æ˜¯è¯•é¢˜å†…å®¹ï¼Œç´¢å¼•ä»0å¼€å§‹
                 problem[i] = new Problem();
                 Question(problem[i],i,cell);
             }
@@ -120,23 +120,23 @@ public class GiveJTP implements GiveTestPaper{                  //³éÈ¡ÌâºÅÎª3µÄ±
     }
     private void Question(Problem problem,int i, Cell[] cell){
         int number=i+1;
-        problem.setContent("µÚ"+number+"Ìâ."+cell[0].getContents());//ÊÔÌâµÄÄÚÈİ
-        problem.setCorrectAnswer(cell[1].getContents().trim());//ÊÔÌâµÄ´ğ°¸
-        problem.setGiveChoiceA(cell[2].getContents().trim());  //ÊÔÌâµÄAÑ¡Ôñ
-        problem.setGiveChoiceB(cell[3].getContents().trim());  //ÊÔÌâµÄBÑ¡Ôñ
-        problem.setGiveChoiceC(cell[4].getContents().trim());  //ÊÔÌâµÄCÑ¡Ôñ
-        problem.setGiveChoiceD(cell[5].getContents().trim());  //ÊÔÌâµÄD´ğ°¸
-        String typeStr = cell[6].getContents().trim();//ÊÔÌâµÄÀàĞÍ£¨ÅĞ¶Ï»òÑ¡Ôñ£©
-        //×¢Òâ£¬ÒòÎªÊÔÌâÓĞÍ¼Ïñ£¬ËùÒÔtypeStrÓĞËÄÖÖ£ºp,p#,x,x#:
+        problem.setContent("ç¬¬"+number+"é¢˜."+cell[0].getContents());//è¯•é¢˜çš„å†…å®¹
+        problem.setCorrectAnswer(cell[1].getContents().trim());//è¯•é¢˜çš„ç­”æ¡ˆ
+        problem.setGiveChoiceA(cell[2].getContents().trim());  //è¯•é¢˜çš„Aé€‰æ‹©
+        problem.setGiveChoiceB(cell[3].getContents().trim());  //è¯•é¢˜çš„Bé€‰æ‹©
+        problem.setGiveChoiceC(cell[4].getContents().trim());  //è¯•é¢˜çš„Cé€‰æ‹©
+        problem.setGiveChoiceD(cell[5].getContents().trim());  //è¯•é¢˜çš„Dç­”æ¡ˆ
+        String typeStr = cell[6].getContents().trim();//è¯•é¢˜çš„ç±»å‹ï¼ˆåˆ¤æ–­æˆ–é€‰æ‹©ï¼‰
+        //æ³¨æ„ï¼Œå› ä¸ºè¯•é¢˜æœ‰å›¾åƒï¼Œæ‰€ä»¥typeStræœ‰å››ç§ï¼šp,p#,x,x#:
         if(typeStr.equalsIgnoreCase("p")){
             problem.setIsJudge(true);
             problem.setIsChoice(false);
-            problem.setImageName("Èí¼ş·¢²¼/Í¼Ïñ¹ÜÀí/havenot.jpg");
+            problem.setImageName("è½¯ä»¶å‘å¸ƒ/å›¾åƒç®¡ç†/havenot.jpg");
         }
         if(typeStr.equalsIgnoreCase("x")) {
             problem.setIsJudge(false);
             problem.setIsChoice(true);
-            problem.setImageName("Èí¼ş·¢²¼/Í¼Ïñ¹ÜÀí/havenot.jpg");
+            problem.setImageName("è½¯ä»¶å‘å¸ƒ/å›¾åƒç®¡ç†/havenot.jpg");
         }
         if(typeStr.startsWith("p#")||typeStr.startsWith("P#")) {
             problem.setIsJudge(true);
