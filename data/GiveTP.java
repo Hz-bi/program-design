@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Random;
-public class GiveTP implements GiveTestPaper{                  //抽取题号为3的倍数的题目
+public class GiveTP implements GiveTestPaper{                  
     TestPaper testPaper ;//试卷
     File fileExcel;
     InputStream in = null;
@@ -66,11 +66,11 @@ public class GiveTP implements GiveTestPaper{                  //抽取题号为
         }
         return b;
     }
-    private int GiveChoice(){
+    private int GiveChoice(){        //选择题目排列顺序
         int c=0;
         Random r=new Random();
-        c=r.nextInt(4);
-        switch(c){
+        c=r.nextInt(4);              //在[0,4)之间取一个随机数
+        switch(c){                   //弹窗语句
             case 0:
                 String s0 ="考试即将开始，您的题目排列为：随机";
                 JLabel mess0 = new JLabel(s0);
