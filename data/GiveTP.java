@@ -69,7 +69,7 @@ public class GiveTP implements GiveTestPaper{
     private int GiveChoice(){        //选择题目排列顺序
         int c=0;
         Random r=new Random();
-        c=r.nextInt(4);              //在[0,4)之间取一个随机数
+        c=r.nextInt(3);              //在[0,4)之间取一个随机数
         switch(c){                   //弹窗语句
             case 0:
                 String s0 ="考试即将开始，您的题目排列为：随机";
