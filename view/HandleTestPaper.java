@@ -27,7 +27,6 @@ public class  HandleTestPaper implements ActionListener{
             view.nextProblem.setVisible(true);
             view.previousProblem.setVisible(true);
             //view.wa.setVisible(false);
-
             if(testPaper!=null){
                 problem = testPaper.nextProblem();
                 handleProblem(problem);
@@ -38,10 +37,27 @@ public class  HandleTestPaper implements ActionListener{
             }
         }
 
-       if(e.getSource()==view.nextProblem){ 
+       if(e.getSource()==view.nextProblem){
+           view.group.clearSelection();
+           view.viewAnswer.setVisible(false);
           //view.time.start(); //开始计时
           if(testPaper!=null){
             problem = testPaper.nextProblem();
+            String NextSelected = problem.getUserAnswer();
+              if(!NextSelected.isEmpty()){
+                  if(NextSelected.equalsIgnoreCase("A")){
+                      view.choiceA.setSelected(true);
+                  }
+                  if(NextSelected.equalsIgnoreCase("B")){
+                      view.choiceB.setSelected(true);
+                  }
+                  if(NextSelected.equalsIgnoreCase("C")){
+                      view.choiceC.setSelected(true);
+                  }
+                  if(NextSelected.equalsIgnoreCase("D")){
+                      view.choiceD.setSelected(true);
+                  }
+              }
             handleProblem(problem);
           }
           else {
@@ -50,12 +66,28 @@ public class  HandleTestPaper implements ActionListener{
           }
        } 
        if(e.getSource()==view.previousProblem){
+          view.group.clearSelection();
          // view.time.start(); //开始计时
           if(testPaper!=null){
             problem = testPaper.previousProblem();
+            String PreSelected = problem.getUserAnswer();
+            if(!PreSelected.isEmpty()){
+                if(PreSelected.equalsIgnoreCase("A")){
+                    view.choiceA.setSelected(true);
+                }
+                if(PreSelected.equalsIgnoreCase("B")){
+                    view.choiceB.setSelected(true);
+                }
+                if(PreSelected.equalsIgnoreCase("C")){
+                    view.choiceC.setSelected(true);
+                }
+                if(PreSelected.equalsIgnoreCase("D")){
+                    view.choiceD.setSelected(true);
+                }
+            }
             handleProblem(problem);
           }
-          else {
+          else{
             JOptionPane.showMessageDialog
               (view,"没有试题","消息对话框",JOptionPane.WARNING_MESSAGE);
           }
@@ -63,7 +95,7 @@ public class  HandleTestPaper implements ActionListener{
        }
        if(e.getSource()==view.viewAnswer){   //查阅答案
            JOptionPane.showMessageDialog
-                    (view,problem.getCorrectAnswer(),"消息对话框",JOptionPane.WARNING_MESSAGE);
+                    (view,"您的答案:"+problem.getUserAnswer()+"正确答案:"+problem.getCorrectAnswer(),"消息对话框",JOptionPane.WARNING_MESSAGE);
            view.viewAnswer.setVisible(false);
        }
        if(e.getSource()==view.aProblemSubmit){  //确认一道题目的答案
@@ -100,12 +132,11 @@ public class  HandleTestPaper implements ActionListener{
               f.setSize(200, 200);//设置好宽高
               f.setLocationRelativeTo(null);//窗体居中显示
               f.setBackground(Color.RED) ;    // 将背景设置成白色
-              JLabel label1 = new JLabel("请选择正确答案");
+              JLabel label1 = new JLabel("请选择答案");
               label1.setHorizontalAlignment(0);
               f.add(label1);
               f.setVisible(true);
           }
-
           problem.setUserAnswer(answer);
        } 
        if(e.getSource()==view.submit){
@@ -152,10 +183,24 @@ public class  HandleTestPaper implements ActionListener{
               else if(problem.getIsJudge()) {
                    handelJudge();
               }
+              //如果非多选，加入单选按钮组
+              if(!problem.getContent().contains("多选")){
+                  //System.out.println(problem.getContent());
+                  view.group.add(view.choiceA);
+                  view.group.add(view.choiceB);
+                  view.group.add(view.choiceC);
+                  view.group.add(view.choiceD);
+              }else{ //如果为多选，移除多选按钮组
+                  view.group.remove(view.choiceA);
+                  view.group.remove(view.choiceB);
+                  view.group.remove(view.choiceC);
+                  view.group.remove(view.choiceD);
+              }
               String imageName = problem.getImageName();
                //用户将必须把图像存放到"图像管理"文件夹
               Image img = tool.getImage("软件发布/图像管理/"+imageName);
-              handleImage(img);   
+              handleImage(img);
+              //view.group.clearSelection();//清除下一题仍旧沿袭选择的情况
           }
     }
     private void handelJudge() {
@@ -179,6 +224,5 @@ public class  HandleTestPaper implements ActionListener{
     private void handleImage(Image image) {
           view.showImage.setImage(image);
           view.showImage.repaint();
-        
     }
 }
