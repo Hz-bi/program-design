@@ -21,6 +21,7 @@ public class TestPaperView extends JPanel implements ActionListener{
    public JRadioButton choiceB;
    public JRadioButton choiceC;
    public JRadioButton choiceD;//显示选项内容
+   public ButtonGroup group = new ButtonGroup(); //按钮选项组，加入后的按钮只能单选
    public JButton nextProblem,previousProblem;  //选择上一题，下一题的按钮
    public JButton aProblemSubmit;  //确认某道题的回答或选择
    public JButton viewAnswer;    //查看答案
@@ -63,7 +64,6 @@ public class TestPaperView extends JPanel implements ActionListener{
       choiceB = new JRadioButton("B");
       choiceC = new JRadioButton("C");
       choiceD = new JRadioButton("D");
-      ButtonGroup group = new ButtonGroup(); //按钮选项组，加入后的按钮只能单选
       choiceA.setVisible(false);
       choiceB.setVisible(false);
       choiceC.setVisible(false);
@@ -156,10 +156,13 @@ public class TestPaperView extends JPanel implements ActionListener{
 
       oneInPSouth.setBackground(Color.green) ;
       oneInPSouth.setBackground(Color.pink) ;
+      /*
       group.add(choiceA);
       group.add(choiceB);
       group.add(choiceC);
       group.add(choiceD); //单选按钮全部加入按钮组，确保只有单选
+
+       */
       oneInPSouth.add(choiceA);
       oneInPSouth.add(choiceB);
       oneInPSouth.add(choiceC);
