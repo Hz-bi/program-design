@@ -28,7 +28,7 @@ public class AppWindow {
        testView.setTeacher(new TeacherOne()); //设置阅卷老师
        testName = "交通法训练";
        testView.setTestName(testName);
-       testView.setTotalTime(900);//考试时间15分钟,900
+       testView.setTotalTime(900);//考试时间15分钟,900秒
        integrationView.addTestPaperView(testName,testView);
        initTestPaper = new GiveJTP(); //创建初始试卷对象
        testPaper= initTestPaper.getTestPaper("软件发布/题库/java基础.xls",6);
