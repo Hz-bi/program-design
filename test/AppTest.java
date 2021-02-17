@@ -1,10 +1,10 @@
-package ch5.test;
-import ch5.data.*;
+package test;
+import data.*;
 public class AppTest {
    public static void main(String []args) {
        GiveTestPaper initTestPaper = new RamdomInitTestPaper(); //创建初始试卷对象
        TestPaper testPaper= 
-       initTestPaper.getTestPaper("C:\Users\10119\Desktop\程序设计综合实践参考代码\ch5\软件发布\题库\交通理论.xls",5);   //得到有5个题目的试卷
+       initTestPaper.getTestPaper("软件发布/题库/交通理论.xls",5);   //得到有5个题目的试卷
        Problem [] problem = testPaper.getAllProblem();      //得到试卷中的全部试题
        for(int i = 0;i<problem.length;i++ ) {
            int m = i+1;

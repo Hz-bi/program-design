@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TestTrain">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/软件发布/TestTrain.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

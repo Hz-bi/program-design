@@ -1,4 +1,4 @@
-package ch5.data;
+package data;
 import java.io.*; 
 import jxl.*; 
 import java.util.*;
@@ -90,12 +90,12 @@ public class RamdomInitTestPaper implements GiveTestPaper {   //将试题放入试卷（
             if(typeStr.equalsIgnoreCase("p")){
                   problem[i].setIsJudge(true);
                   problem[i].setIsChoice(false);
-                  problem[i].setImageName("havenot.jpg");
+                  problem[i].setImageName("软件发布/图像管理/havenot.jpg");
             }
             if(typeStr.equalsIgnoreCase("x")) {
                   problem[i].setIsJudge(false);
                   problem[i].setIsChoice(true);
-                  problem[i].setImageName("havenot.jpg");
+                  problem[i].setImageName("软件发布/图像管理/havenot.jpg");
             }
             if(typeStr.startsWith("p#")||typeStr.startsWith("P#")) {
                   problem[i].setIsJudge(true);

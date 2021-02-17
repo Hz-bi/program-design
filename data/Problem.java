@@ -1,4 +1,4 @@
-package ch5.data;
+package data;
 public class Problem {
     boolean isChoice;            //是否是选择题
     boolean isJudge;            //是否是判断题

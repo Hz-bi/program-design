@@ -1,4 +1,4 @@
-package ch5.data;
+package data;
 public class TestPaper {  //试卷
     private Problem [] problem=null;  //数组每个单元存放一道试题（一个Problem对象）
     int index = -1;

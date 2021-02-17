@@ -1,4 +1,4 @@
-package ch5.data;
+package data;
 public interface Teacher {
     public void giveTestPaparScore(TestPaper testPaper);
 }
